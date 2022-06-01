@@ -3,5 +3,5 @@ FROM php:5.5-apache
 RUN docker-php-ext-install pdo_mysql
 RUN a2enmod rewrite
 
-ADD ./click /var/www
-ADD ./click/ /var/www/html
+COPY ./click /var/www/HTML/
+
