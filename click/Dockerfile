@@ -1,7 +1,12 @@
-FROM php:5.5-apache
 
-RUN docker-php-ext-install pdo_mysql
-RUN a2enmod rewrite
+FROM php:7.4-apache
 
-COPY ./click /var/www/HTML/
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY start-apache /usr/local/bin
+RUN  a2enmod rewrite
 
+# Copy application source
+ADD ./ /var/www/
+RUN chown -R www-data:www-data /var/www
+
+CMD ["start-apache"]
