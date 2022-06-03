@@ -1,5 +1,5 @@
 
-FROM php:7.
+FROM php:7.4.29
 RUN  a2enmod rewrite
 
 # Copy application source
